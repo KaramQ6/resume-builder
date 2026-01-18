@@ -16,6 +16,7 @@ import imgRama from "@assets/راما_1768730752107.jpeg";
 import imgNour from "@assets/نور_1768730747585.jpeg";
 import imgSerena from "@assets/سيرينا_1768730752108.jpeg";
 import imgNagham from "@assets/Screenshot_2026-01-18_131226_1768731167009.png";
+import imgBaraa from "@assets/image_1768733528198.png";
 
 // RoboCraft Images
 import imgRoboCraftWinners from "@assets/IMG_0608_1768731336994.JPG";
@@ -57,7 +58,8 @@ const TEAM_DATA = {
     {
       name: "Baraa Alzoubi",
       role: "Treasurer",
-      linkedin: "https://www.linkedin.com/in/baraa-alzoubi-65746a37b"
+      linkedin: "https://www.linkedin.com/in/baraa-alzoubi-65746a37b",
+      image: imgBaraa
     }
   ],
   core: [
