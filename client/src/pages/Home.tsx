@@ -10,6 +10,15 @@ import heroBg from "@assets/generated_images/abstract_futuristic_robotics_backgr
 import rasLogo from "@assets/logo_ras-removebg-preview_(2)_1768729426847.png";
 import aiOverlay from "@assets/generated_images/futuristic_ai_data_stream_overlay_texture.png";
 
+// Team Images
+import imgMohammad from "@assets/محمد_1768730747584.jpg";
+import imgRama from "@assets/راما_1768730752107.jpeg";
+import imgNour from "@assets/نور_1768730747585.jpeg";
+import imgSerena from "@assets/سيرينا_1768730752108.jpeg";
+// Note: HEIC might not render in all browsers, but importing it as requested.
+// Ideally this should be converted to JPG/PNG. 
+import imgNagham from "@assets/نغم_1768730747585.HEIC";
+
 // Gallery Images
 import imgGreenEye from "@assets/stock_images/futuristic_robotic_e_c8f06005.jpg";
 import imgBranch from "@assets/stock_images/group_of_engineering_371ca71d.jpg";
@@ -22,18 +31,21 @@ const TEAM_DATA = {
   chair: {
     name: "Mohammad Malkawi",
     role: "Chair",
-    linkedin: "https://www.linkedin.com/in/mohammad-h-malkawi-3264b5365"
+    linkedin: "https://www.linkedin.com/in/mohammad-h-malkawi-3264b5365",
+    image: imgMohammad
   },
   viceChair: {
     name: "Rama Maqableh",
     role: "Vice Chair",
-    linkedin: "https://www.linkedin.com/in/rama-maqableh-45124821b"
+    linkedin: "https://www.linkedin.com/in/rama-maqableh-45124821b",
+    image: imgRama
   },
   executive: [
     {
       name: "Nagham Zahrawi",
       role: "Media Team Leader",
-      linkedin: "https://www.linkedin.com/in/nagham-al-zahrawi-ba71b337a"
+      linkedin: "https://www.linkedin.com/in/nagham-al-zahrawi-ba71b337a",
+      image: imgNagham
     },
     {
       name: "Bushra Abu Alhija",
@@ -50,12 +62,14 @@ const TEAM_DATA = {
     {
       name: "Nour Khalaf",
       role: "Media Team",
-      linkedin: "https://www.linkedin.com/in/nour-khalaf-0a7192361"
+      linkedin: "https://www.linkedin.com/in/nour-khalaf-0a7192361",
+      image: imgNour
     },
     {
       name: "Serena Alazzam",
       role: "Webmaster",
-      linkedin: "https://www.linkedin.com/in/serena-alazzam-9a8b59321"
+      linkedin: "https://www.linkedin.com/in/serena-alazzam-9a8b59321",
+      image: imgSerena
     },
     {
       name: "Raghad Alzoubi",
@@ -664,12 +678,20 @@ function TeamCard({ member, delay, isLeader = false }: { member: any, delay: num
       <div className="flex flex-col items-center text-center h-full relative z-10">
         <div className={`relative mb-6 rounded-full p-1 fusion-gradient group-hover:scale-105 transition-transform duration-300
            ${isLeader ? 'w-28 h-28' : 'w-20 h-20'}`}>
-          <div className="w-full h-full rounded-full bg-[#15151a] flex items-center justify-center overflow-hidden">
-             {/* Initials Avatar */}
-             <span className={`font-orbitron font-bold text-white group-hover:text-primary transition-colors
-               ${isLeader ? 'text-3xl' : 'text-xl'}`}>
-               {member.name.charAt(0)}
-             </span>
+          <div className="w-full h-full rounded-full bg-[#15151a] flex items-center justify-center overflow-hidden relative">
+             {member.image ? (
+               <img 
+                 src={member.image} 
+                 alt={member.name}
+                 className="w-full h-full object-cover"
+               />
+             ) : (
+               /* Initials Fallback */
+               <span className={`font-orbitron font-bold text-white group-hover:text-primary transition-colors
+                 ${isLeader ? 'text-3xl' : 'text-xl'}`}>
+                 {member.name.charAt(0)}
+               </span>
+             )}
           </div>
           
           {/* LinkedIn Overlay Button */}
