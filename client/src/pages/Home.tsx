@@ -23,12 +23,13 @@ import imgRoboCraftWinners from "@assets/IMG_0608_1768731336994.JPG";
 import imgRoboCraftBanner from "@assets/بنر_1768731492170.png";
 
 // Gallery Images
-import imgGreenEye from "@assets/stock_images/futuristic_robotic_e_c8f06005.jpg";
-import imgBranch from "@assets/stock_images/group_of_engineering_371ca71d.jpg";
-import imgMedia from "@assets/stock_images/media_team_camera_fi_e6c50aac.jpg";
-import imgShowcase from "@assets/stock_images/futuristic_robot_exh_d71a7c20.jpg";
-import imgWork from "@assets/stock_images/students_working_on__fbb8693f.jpg";
-import imgFun from "@assets/stock_images/happy_university_stu_786df665.jpg";
+import imgMarc from "@assets/Screenshot_2025-12-27_153052_1768733912431.png";
+import imgGroupStairs from "@assets/DSC_0272_NEF_1768733582530.JPG";
+import imgStudio from "@assets/77182938-b2c4-4a98-8539-3b32ccf5e3b6_1768733861014.JPG";
+import imgGroupOutdoor from "@assets/IMG_0123_1768733861014.JPG";
+import imgCertificates from "@assets/IMG_0618_1768733861015.JPG";
+import imgStage from "@assets/e0de51e4-5a47-44d5-9cc2-04f0fd81fde8_1768733861015.JPG";
+import imgAudience from "@assets/DSC_0251_NEF_1768734007285.JPG";
 
 const TEAM_DATA = {
   chair: {
@@ -97,8 +98,8 @@ const TIMELINE_DATA = [
     description: "National Robotics & AI Competition – Jordan",
     icon: Trophy,
     color: "text-secondary",
-    image: imgRoboCraftWinners, // Added image
-    banner: imgRoboCraftBanner  // Added banner
+    image: imgRoboCraftWinners, 
+    banner: imgRoboCraftBanner 
   }
 ];
 
@@ -578,41 +579,47 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               { 
-                title: "Innovation in Action", 
-                subtitle: "GREEN EYE", 
-                type: "landscape",
-                img: imgGreenEye 
-              },
-              { 
-                title: "Building Together", 
-                subtitle: "BRANCH PIC", 
+                title: "Meet Marc", 
+                subtitle: "OUR ROBOT", 
                 type: "square",
-                img: imgBranch 
+                img: imgMarc 
               },
               { 
-                title: "Behind the Scenes", 
-                subtitle: "MEDIA ON", 
-                type: "square",
-                img: imgMedia 
-              },
-              { 
-                title: "Future of Robotics", 
-                subtitle: "Tech Showcase", 
+                title: "RAS Family", 
+                subtitle: "COMMUNITY", 
                 type: "landscape",
-                img: imgShowcase 
+                img: imgGroupStairs 
               },
               { 
-                title: "Minds at Work", 
-                subtitle: "TIME WORK", 
+                title: "Media Production", 
+                subtitle: "BEHIND THE SCENES", 
                 type: "square",
-                img: imgWork 
+                img: imgStudio 
               },
               { 
-                title: "Create Fun and Minds", 
-                subtitle: "FUN", 
-                type: "landscape",
-                img: imgFun 
+                title: "Recognition", 
+                subtitle: "ACHIEVEMENTS", 
+                type: "square",
+                img: imgCertificates 
               },
+              { 
+                title: "Team Spirit", 
+                subtitle: "TOGETHER", 
+                type: "square",
+                img: imgGroupOutdoor 
+              },
+              { 
+                title: "Grand Events", 
+                subtitle: "IMPACT", 
+                type: "landscape",
+                img: imgStage 
+              },
+              { 
+                 title: "Engaged Community",
+                 subtitle: "EVENTS",
+                 type: "square",
+                 img: imgAudience
+              }
             ].map((item, idx) => (
               <motion.div
                 key={idx}
