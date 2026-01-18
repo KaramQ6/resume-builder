@@ -17,6 +17,10 @@ import imgNour from "@assets/نور_1768730747585.jpeg";
 import imgSerena from "@assets/سيرينا_1768730752108.jpeg";
 import imgNagham from "@assets/Screenshot_2026-01-18_131226_1768731167009.png";
 
+// RoboCraft Images
+import imgRoboCraftWinners from "@assets/IMG_0608_1768731336994.JPG";
+import imgRoboCraftBanner from "@assets/بنر_1768731492170.png";
+
 // Gallery Images
 import imgGreenEye from "@assets/stock_images/futuristic_robotic_e_c8f06005.jpg";
 import imgBranch from "@assets/stock_images/group_of_engineering_371ca71d.jpg";
@@ -90,7 +94,9 @@ const TIMELINE_DATA = [
     title: "RoboCraft",
     description: "National Robotics & AI Competition – Jordan",
     icon: Trophy,
-    color: "text-secondary"
+    color: "text-secondary",
+    image: imgRoboCraftWinners, // Added image
+    banner: imgRoboCraftBanner  // Added banner
   }
 ];
 
@@ -414,36 +420,61 @@ export default function Home() {
             </div>
 
             <div className="space-y-12">
-              {TIMELINE_DATA.map((item, idx) => (
+              {TIMELINE_DATA.map((item: any, idx) => (
                 <motion.div 
                   key={idx}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.3 }}
-                  className={`flex items-center justify-between w-full ${idx % 2 === 0 ? 'flex-row-reverse' : ''}`}
+                  className={`flex flex-col md:flex-row items-center justify-between w-full ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''} gap-8 md:gap-0`}
                 >
                   {/* Empty space for alignment */}
-                  <div className="w-5/12" />
+                  <div className="hidden md:block w-5/12" />
                   
                   {/* Center Node */}
-                  <div className="relative z-10 w-10 h-10 rounded-full bg-[#08080a] border-2 border-primary flex items-center justify-center shadow-[0_0_15px_rgba(229,9,20,0.5)]">
+                  <div className="relative z-10 w-10 h-10 rounded-full bg-[#08080a] border-2 border-primary flex items-center justify-center shadow-[0_0_15px_rgba(229,9,20,0.5)] flex-shrink-0">
                      <div className="w-3 h-3 bg-white rounded-full" />
                   </div>
                   
                   {/* Content Card */}
-                  <div className={`w-5/12 ${idx % 2 === 0 ? 'text-right' : 'text-left'}`}>
-                    <div className="glass-card p-6 rounded-xl border border-white/5 hover:border-primary/30 transition-colors group">
-                       <div className={`flex items-center gap-3 mb-2 ${idx % 2 === 0 ? 'justify-end' : ''}`}>
+                  <div className={`w-full md:w-5/12 ${idx % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+                    <div className="glass-card p-6 rounded-xl border border-white/5 hover:border-primary/30 transition-colors group overflow-hidden">
+                       <div className={`flex items-center gap-3 mb-2 ${idx % 2 === 0 ? 'md:justify-end' : ''}`}>
                          <item.icon className={`w-5 h-5 ${item.color}`} />
                          <span className="font-mono text-sm text-gray-400">{item.date}</span>
                        </div>
                        <h3 className="font-orbitron text-xl font-bold text-white mb-1 group-hover:text-primary transition-colors">
                          {item.title}
                        </h3>
-                       <p className="text-sm text-gray-400">
+                       <p className="text-sm text-gray-400 mb-4">
                          {item.description}
                        </p>
+                       
+                       {/* Milestone Images (Special for RoboCraft) */}
+                       {item.image && (
+                         <div className="mt-4 space-y-3">
+                           <div className="rounded-lg overflow-hidden border border-white/10 relative h-48 w-full group/img">
+                             <img 
+                               src={item.image} 
+                               alt="RoboCraft Winners" 
+                               className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-110"
+                             />
+                             <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity">
+                               <span className="text-white font-orbitron text-sm font-bold bg-primary/80 px-3 py-1 rounded">Winners</span>
+                             </div>
+                           </div>
+                           {item.banner && (
+                             <div className="rounded-lg overflow-hidden border border-white/10 h-24 w-full">
+                               <img 
+                                 src={item.banner} 
+                                 alt="RoboCraft Banner" 
+                                 className="w-full h-full object-cover"
+                               />
+                             </div>
+                           )}
+                         </div>
+                       )}
                     </div>
                   </div>
                 </motion.div>
