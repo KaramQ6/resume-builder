@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Menu, X, ChevronRight, Linkedin, Facebook, Instagram, 
-  Rocket, Users, Cpu, ArrowRight, ExternalLink 
+  Rocket, Users, Cpu, ArrowRight, ExternalLink, CircuitBoard, MonitorSmartphone, Share2, Bot
 } from "lucide-react";
 import heroBg from "@assets/generated_images/abstract_futuristic_robotics_background_with_neon_nodes.png";
 import rasLogo from "@assets/logo_ras-removebg-preview_(2)_1768729426847.png";
@@ -93,7 +93,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary selection:text-white">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary selection:text-white font-space">
       {/* Navbar */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -321,56 +321,53 @@ export default function Home() {
       </section>
 
       {/* Team Section */}
-      <section id="team" className="py-24 bg-gradient-to-b from-background to-[#0f0f12]">
-        <div className="container mx-auto px-6">
+      <section id="team" className="py-24 relative overflow-hidden bg-[#0a0a0e]">
+        {/* Robotics Circuit Pattern Background */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full" 
+             style={{ 
+               backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(229,9,20,0.3) 1px, transparent 0)',
+               backgroundSize: '40px 40px' 
+             }} 
+          />
+          <svg className="absolute top-0 right-0 w-1/3 h-full opacity-30 text-primary" viewBox="0 0 100 200" preserveAspectRatio="none">
+             <path d="M50,0 L50,50 L90,90 L90,200" stroke="currentColor" strokeWidth="0.5" fill="none" />
+             <path d="M30,0 L30,40 L70,80 L70,200" stroke="currentColor" strokeWidth="0.5" fill="none" />
+             <circle cx="90" cy="90" r="2" fill="currentColor" />
+          </svg>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="font-orbitron text-4xl md:text-5xl font-bold text-white mb-4">OUR TEAM</h2>
+            <div className="inline-flex items-center gap-2 mb-4 text-primary/80 uppercase tracking-widest text-xs font-bold">
+               <Bot size={16} />
+               <span>Our Engineers</span>
+            </div>
+            <h2 className="font-orbitron text-4xl md:text-5xl font-bold text-white mb-4">LEADERSHIP TEAM</h2>
             <div className="w-32 h-1 fusion-gradient mx-auto rounded-full" />
           </div>
 
           <div className="max-w-6xl mx-auto space-y-16">
             
-            {/* Leadership */}
-            <div className="grid md:grid-cols-2 gap-8 justify-center max-w-4xl mx-auto">
-              {[TEAM_DATA.chair, TEAM_DATA.viceChair].map((leader) => (
-                <motion.div
-                  key={leader.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="group relative"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
-                  <div className="relative glass-card p-8 rounded-2xl border border-white/5 text-center hover:-translate-y-2 transition-transform duration-300">
-                    <div className="w-24 h-24 mx-auto bg-slate-900 rounded-full mb-6 flex items-center justify-center border-2 border-primary shadow-lg shadow-primary/20 group-hover:shadow-primary/50 transition-all">
-                       <span className="font-orbitron text-3xl font-bold text-primary">
-                         {leader.name.charAt(0)}
-                       </span>
-                    </div>
-                    <h3 className="font-orbitron text-2xl font-bold text-white mb-2">{leader.name}</h3>
-                    <p className="text-primary font-medium tracking-wide uppercase text-sm mb-4">{leader.role}</p>
-                    <a
-                      href={leader.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-                    >
-                      <Linkedin size={20} />
-                      <span className="text-sm">Connect on LinkedIn</span>
-                    </a>
-                  </div>
-                </motion.div>
+            {/* Leadership (Chair & Vice) */}
+            <div className="grid md:grid-cols-2 gap-8 justify-center max-w-3xl mx-auto">
+              {[TEAM_DATA.chair, TEAM_DATA.viceChair].map((leader, idx) => (
+                 <TeamCard key={leader.name} member={leader} delay={idx * 0.1} isLeader />
               ))}
             </div>
 
             {/* Executives */}
             <div>
-               <h3 className="font-orbitron text-xl text-white/80 text-center mb-8 uppercase tracking-widest flex items-center justify-center gap-4">
-                 <span className="w-8 h-px bg-white/20"></span>
-                 Executive Board
-                 <span className="w-8 h-px bg-white/20"></span>
-               </h3>
-               <div className="grid md:grid-cols-3 gap-6">
+               <div className="flex items-center justify-center gap-4 mb-10">
+                 <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent w-24" />
+                 <h3 className="font-orbitron text-xl text-white/90 uppercase tracking-widest flex items-center gap-2">
+                   <MonitorSmartphone size={18} className="text-secondary" />
+                   Executive Board
+                 </h3>
+                 <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent w-24" />
+               </div>
+               
+               <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {TEAM_DATA.executive.map((exec, idx) => (
                   <TeamCard key={exec.name} member={exec} delay={idx * 0.1} />
                 ))}
@@ -379,12 +376,16 @@ export default function Home() {
 
             {/* Core Members */}
             <div>
-               <h3 className="font-orbitron text-xl text-white/80 text-center mb-8 uppercase tracking-widest flex items-center justify-center gap-4">
-                 <span className="w-8 h-px bg-white/20"></span>
-                 Core Members
-                 <span className="w-8 h-px bg-white/20"></span>
-               </h3>
-               <div className="grid md:grid-cols-3 gap-6">
+               <div className="flex items-center justify-center gap-4 mb-10">
+                 <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent w-24" />
+                 <h3 className="font-orbitron text-xl text-white/90 uppercase tracking-widest flex items-center gap-2">
+                   <Share2 size={18} className="text-primary" />
+                   Core Members
+                 </h3>
+                 <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent w-24" />
+               </div>
+
+               <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {TEAM_DATA.core.map((member, idx) => (
                   <TeamCard key={member.name} member={member} delay={idx * 0.1} />
                 ))}
@@ -396,73 +397,87 @@ export default function Home() {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-24 bg-background relative">
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[100px]" />
+      <section id="gallery" className="py-24 bg-[#050507] relative border-t border-white/5">
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(0,0,0,0.2)_25%,transparent_25%,transparent_75%,rgba(0,0,0,0.2)_75%,rgba(0,0,0,0.2)),linear-gradient(45deg,rgba(0,0,0,0.2)_25%,transparent_25%,transparent_75%,rgba(0,0,0,0.2)_75%,rgba(0,0,0,0.2))] bg-[size:20px_20px] opacity-10" />
         
         <div className="container mx-auto px-6 relative z-10">
-          <h2 className="font-orbitron text-4xl font-bold text-white mb-12 text-center">
-            GALLERY
-          </h2>
+          <div className="flex flex-col items-center mb-16">
+            <CircuitBoard className="text-primary mb-4 w-10 h-10 opacity-80" />
+            <h2 className="font-orbitron text-4xl font-bold text-white mb-2 text-center">
+              GALLERY
+            </h2>
+            <p className="text-gray-400 font-light tracking-wide">CAPTURING INNOVATION IN MOTION</p>
+          </div>
           
-          <div className="grid md:grid-cols-3 gap-4 auto-rows-[250px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               { 
                 title: "Innovation in Action", 
                 subtitle: "GREEN EYE", 
-                colSpan: "md:col-span-2", 
+                type: "landscape",
                 img: imgGreenEye 
               },
               { 
                 title: "Building Together", 
                 subtitle: "BRANCH PIC", 
-                colSpan: "", 
+                type: "square",
                 img: imgBranch 
               },
               { 
                 title: "Behind the Scenes", 
                 subtitle: "MEDIA ON", 
-                colSpan: "", 
+                type: "square",
                 img: imgMedia 
               },
               { 
                 title: "Future of Robotics", 
                 subtitle: "Tech Showcase", 
-                colSpan: "md:col-span-2", 
+                type: "landscape",
                 img: imgShowcase 
               },
               { 
                 title: "Minds at Work", 
                 subtitle: "TIME WORK", 
-                colSpan: "", 
+                type: "square",
                 img: imgWork 
               },
               { 
                 title: "Create Fun and Minds", 
                 subtitle: "FUN", 
-                colSpan: "md:col-span-3", 
+                type: "landscape",
                 img: imgFun 
               },
             ].map((item, idx) => (
               <motion.div
                 key={idx}
-                className={`relative group overflow-hidden rounded-xl cursor-pointer ${item.colSpan}`}
+                className={`relative group overflow-hidden rounded-md border border-white/10 cursor-pointer 
+                  ${item.type === 'landscape' ? 'md:col-span-2' : 'md:col-span-1'} 
+                  h-64 md:h-72 lg:h-80`}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
               >
+                {/* Image */}
                 <div 
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                   style={{ backgroundImage: `url(${item.img})` }}
                 />
                 
-                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition-colors duration-500" />
+                {/* Tech Grid Overlay on Hover */}
+                <div className="absolute inset-0 bg-[#0a0a0e]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-[linear-gradient(transparent_98%,rgba(0,240,255,0.2)_100%),linear-gradient(90deg,transparent_98%,rgba(0,240,255,0.2)_100%)] bg-[size:40px_40px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
-                {/* Gradient overlay for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
+                {/* Corner Accents */}
+                <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-primary opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-secondary opacity-0 group-hover:opacity-100 transition-all duration-300" />
+
+                {/* Content */}
                 <div className="absolute inset-0 flex flex-col justify-end p-6">
                   <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                    <span className="text-white text-xs font-bold uppercase tracking-wider mb-1 block">{item.subtitle}</span>
+                    <div className="inline-block px-2 py-1 bg-primary/20 backdrop-blur-md border border-primary/30 text-primary text-[10px] font-bold uppercase tracking-wider mb-2">
+                       {item.subtitle}
+                    </div>
                     <h3 className="font-orbitron text-xl font-bold text-white">{item.title}</h3>
                   </div>
                 </div>
@@ -512,27 +527,53 @@ export default function Home() {
   );
 }
 
-function TeamCard({ member, delay }: { member: any, delay: number }) {
+function TeamCard({ member, delay, isLeader = false }: { member: any, delay: number, isLeader?: boolean }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay }}
       viewport={{ once: true }}
-      className="glass-card p-6 rounded-xl hover:bg-white/5 transition-all group hover:border-primary/50"
+      className={`glass-card relative overflow-hidden rounded-xl hover:shadow-[0_0_20px_rgba(229,9,20,0.15)] transition-all group duration-300 border border-white/5 hover:border-primary/40 group
+        ${isLeader ? 'p-8 min-h-[320px]' : 'p-6 min-h-[280px]'}`}
     >
-      <div className="flex items-center justify-between mb-4">
-        <div className="w-12 h-12 rounded-full bg-slate-900 border border-white/10 flex items-center justify-center group-hover:border-primary transition-colors">
-          <span className="font-orbitron font-bold text-gray-400 group-hover:text-primary transition-colors">
-            {member.name.charAt(0)}
-          </span>
+      {/* Card Tech Decoration */}
+      <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-white/5 to-transparent -mr-8 -mt-8 rounded-full blur-md group-hover:bg-primary/20 transition-colors" />
+      
+      <div className="flex flex-col items-center text-center h-full relative z-10">
+        <div className={`relative mb-6 rounded-full p-1 fusion-gradient group-hover:scale-105 transition-transform duration-300
+           ${isLeader ? 'w-28 h-28' : 'w-20 h-20'}`}>
+          <div className="w-full h-full rounded-full bg-[#15151a] flex items-center justify-center overflow-hidden">
+             {/* Initials Avatar */}
+             <span className={`font-orbitron font-bold text-white group-hover:text-primary transition-colors
+               ${isLeader ? 'text-3xl' : 'text-xl'}`}>
+               {member.name.charAt(0)}
+             </span>
+          </div>
+          
+          {/* LinkedIn Overlay Button */}
+          <a 
+            href={member.linkedin} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="absolute inset-0 rounded-full bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm cursor-pointer"
+          >
+            <Linkedin className="text-white w-6 h-6 hover:scale-110 transition-transform" />
+          </a>
         </div>
-        <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-primary transition-colors">
-          <Linkedin size={18} />
-        </a>
+
+        <div className="flex-grow">
+          <h4 className={`font-orbitron font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:fusion-gradient transition-all
+            ${isLeader ? 'text-2xl' : 'text-lg'}`}>
+            {member.name}
+          </h4>
+          <div className="h-0.5 w-12 bg-white/10 mx-auto mb-3 group-hover:w-20 group-hover:bg-primary transition-all duration-300" />
+          <p className="text-primary/90 font-medium tracking-wide text-sm uppercase">{member.role}</p>
+        </div>
       </div>
-      <h4 className="font-orbitron text-lg font-bold text-white truncate group-hover:text-primary transition-colors">{member.name}</h4>
-      <p className="text-sm text-gray-400">{member.role}</p>
+      
+      {/* Bottom accent line */}
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
     </motion.div>
   );
 }
