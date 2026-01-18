@@ -15,9 +15,7 @@ import imgMohammad from "@assets/محمد_1768730747584.jpg";
 import imgRama from "@assets/راما_1768730752107.jpeg";
 import imgNour from "@assets/نور_1768730747585.jpeg";
 import imgSerena from "@assets/سيرينا_1768730752108.jpeg";
-// Note: HEIC might not render in all browsers, but importing it as requested.
-// Ideally this should be converted to JPG/PNG. 
-import imgNagham from "@assets/نغم_1768730747585.HEIC";
+import imgNagham from "@assets/Screenshot_2026-01-18_131226_1768731167009.png";
 
 // Gallery Images
 import imgGreenEye from "@assets/stock_images/futuristic_robotic_e_c8f06005.jpg";
