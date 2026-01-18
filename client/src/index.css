@@ -31,40 +31,41 @@
 }
 
 :root {
-  /* Dark Theme Default for this project */
-  --background: 222 47% 11%; /* #0f172a - Slate 900 */
-  --foreground: 210 40% 98%; /* Slate 50 */
+  /* Dark Theme Default */
+  --background: 240 10% 4%; /* Very dark almost black background */
+  --foreground: 0 0% 95%;
 
-  --card: 217 33% 17%; /* Slate 800 */
-  --card-foreground: 210 40% 98%;
+  --card: 240 10% 8%;
+  --card-foreground: 0 0% 95%;
 
-  --popover: 222 47% 11%;
-  --popover-foreground: 210 40% 98%;
+  --popover: 240 10% 8%;
+  --popover-foreground: 0 0% 95%;
 
-  /* Neon Cyan/Blue Primary */
-  --primary: 190 100% 50%; /* #00F0FF Neon Cyan */
-  --primary-foreground: 222 47% 11%;
+  /* Primary: #e50914 (Vibrant Red) -> 357 92% 47% */
+  --primary: 357 92% 47%;
+  --primary-foreground: 0 0% 100%;
 
-  --secondary: 215 25% 27%; /* Slate 700 */
-  --secondary-foreground: 210 40% 98%;
+  /* Secondary: #61116a (Deep Purple) -> 294 72% 24% */
+  --secondary: 294 72% 24%;
+  --secondary-foreground: 0 0% 100%;
 
-  --muted: 217 33% 17%;
-  --muted-foreground: 215 20.2% 65.1%;
+  --muted: 240 5% 15%;
+  --muted-foreground: 240 5% 65%;
 
-  --accent: 190 100% 50%;
-  --accent-foreground: 222 47% 11%;
+  /* Accent can be the purple or a blend */
+  --accent: 294 72% 24%;
+  --accent-foreground: 0 0% 100%;
 
   --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive-foreground: 0 0% 98%;
 
-  --border: 217 33% 17%;
-  --input: 217 33% 17%;
-  --ring: 190 100% 50%;
+  --border: 240 5% 15%;
+  --input: 240 5% 15%;
+  --ring: 357 92% 47%;
   
   --radius: 0.5rem;
 }
 
-/* Force dark mode styles essentially */
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
@@ -76,19 +77,29 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Orbitron', sans-serif;
 }
 
-/* Custom Utilities for Neon Glow */
+/* Custom Utilities for New Theme */
 .neon-text {
-  text-shadow: 0 0 10px rgba(0, 240, 255, 0.7), 0 0 20px rgba(0, 240, 255, 0.5);
+  text-shadow: 0 0 10px rgba(229, 9, 20, 0.7), 0 0 20px rgba(97, 17, 106, 0.5);
 }
 
 .neon-border {
-  box-shadow: 0 0 10px rgba(0, 240, 255, 0.3), inset 0 0 5px rgba(0, 240, 255, 0.3);
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.3), inset 0 0 5px rgba(229, 9, 20, 0.3);
 }
 
 .glass-card {
-  background: rgba(30, 41, 59, 0.4);
+  background: rgba(20, 20, 25, 0.6);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(229, 9, 20, 0.15); /* Subtle red border */
+}
+
+.fusion-gradient {
+  background: linear-gradient(135deg, #e50914 0%, #61116a 100%);
+}
+
+.fusion-text-gradient {
+  background: linear-gradient(135deg, #e50914 0%, #ff4d58 50%, #b32cb3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Scrollbar */
@@ -99,9 +110,9 @@ h1, h2, h3, h4, h5, h6 {
   background: hsl(var(--background));
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted));
+  background: #61116a;
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--secondary));
+  background: #e50914;
 }
