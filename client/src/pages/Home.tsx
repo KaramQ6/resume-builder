@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { 
   Menu, X, ChevronRight, Linkedin, Facebook, Instagram, 
-  Rocket, Users, Cpu, ArrowRight, ExternalLink, CircuitBoard, MonitorSmartphone, Share2, Bot
+  Rocket, Users, Cpu, ArrowRight, ExternalLink, CircuitBoard, MonitorSmartphone, Share2, Bot,
+  Calendar, Trophy, Flag
 } from "lucide-react";
 import heroBg from "@assets/generated_images/abstract_futuristic_robotics_background_with_neon_nodes.png";
 import rasLogo from "@assets/logo_ras-removebg-preview_(2)_1768729426847.png";
@@ -64,9 +65,27 @@ const TEAM_DATA = {
   ]
 };
 
+const TIMELINE_DATA = [
+  {
+    date: "16 / 11 / 2025",
+    title: "RAS Jadara Established",
+    description: "Branch Founded",
+    icon: Flag,
+    color: "text-primary"
+  },
+  {
+    date: "6 / 1 / 2026",
+    title: "RoboCraft",
+    description: "National Robotics & AI Competition – Jordan",
+    icon: Trophy,
+    color: "text-secondary"
+  }
+];
+
 const NAVBAR_LINKS = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
+  { name: "Timeline", href: "#timeline" },
   { name: "Team", href: "#team" },
   { name: "Gallery", href: "#gallery" },
   { name: "Contact", href: "#contact" },
@@ -75,6 +94,12 @@ const NAVBAR_LINKS = [
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -93,7 +118,42 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary selection:text-white font-space">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary selection:text-white font-space relative">
+      {/* Global Scroll Progress Bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary transform origin-left z-[100]"
+        style={{ scaleX }}
+      />
+      
+      {/* Background Motion Elements */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <motion.div 
+          animate={{ 
+            y: [0, -1000],
+            opacity: [0, 0.2, 0]
+          }}
+          transition={{ 
+            repeat: Infinity, 
+            duration: 20, 
+            ease: "linear" 
+          }}
+          className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0%,rgba(229,9,20,0.1)_50%,transparent_100%)] w-px left-[10%]"
+        />
+        <motion.div 
+          animate={{ 
+            y: [0, -1500],
+            opacity: [0, 0.15, 0]
+          }}
+          transition={{ 
+            repeat: Infinity, 
+            duration: 25, 
+            ease: "linear",
+            delay: 5
+          }}
+          className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0%,rgba(97,17,106,0.1)_50%,transparent_100%)] w-px right-[15%]"
+        />
+      </div>
+
       {/* Navbar */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -312,6 +372,67 @@ export default function Home() {
                   <div>
                     <h3 className="font-orbitron text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
                     <p className="text-sm text-gray-400">{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section id="timeline" className="py-24 bg-[#08080a] relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="font-orbitron text-4xl font-bold text-white mb-4">MILESTONES</h2>
+            <div className="w-24 h-1 fusion-gradient mx-auto rounded-full" />
+            <p className="mt-4 text-gray-400 font-light">OUR JOURNEY OF INNOVATION</p>
+          </div>
+
+          <div className="max-w-4xl mx-auto relative">
+            {/* Center Line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-white/10">
+              <motion.div 
+                initial={{ height: 0 }}
+                whileInView={{ height: "100%" }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                className="w-full bg-gradient-to-b from-primary via-secondary to-primary"
+              />
+            </div>
+
+            <div className="space-y-12">
+              {TIMELINE_DATA.map((item, idx) => (
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.3 }}
+                  className={`flex items-center justify-between w-full ${idx % 2 === 0 ? 'flex-row-reverse' : ''}`}
+                >
+                  {/* Empty space for alignment */}
+                  <div className="w-5/12" />
+                  
+                  {/* Center Node */}
+                  <div className="relative z-10 w-10 h-10 rounded-full bg-[#08080a] border-2 border-primary flex items-center justify-center shadow-[0_0_15px_rgba(229,9,20,0.5)]">
+                     <div className="w-3 h-3 bg-white rounded-full" />
+                  </div>
+                  
+                  {/* Content Card */}
+                  <div className={`w-5/12 ${idx % 2 === 0 ? 'text-right' : 'text-left'}`}>
+                    <div className="glass-card p-6 rounded-xl border border-white/5 hover:border-primary/30 transition-colors group">
+                       <div className={`flex items-center gap-3 mb-2 ${idx % 2 === 0 ? 'justify-end' : ''}`}>
+                         <item.icon className={`w-5 h-5 ${item.color}`} />
+                         <span className="font-mono text-sm text-gray-400">{item.date}</span>
+                       </div>
+                       <h3 className="font-orbitron text-xl font-bold text-white mb-1 group-hover:text-primary transition-colors">
+                         {item.title}
+                       </h3>
+                       <p className="text-sm text-gray-400">
+                         {item.description}
+                       </p>
+                    </div>
                   </div>
                 </motion.div>
               ))}
