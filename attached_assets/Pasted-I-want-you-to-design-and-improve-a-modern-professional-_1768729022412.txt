@@ -1,0 +1,167 @@
+I want you to design and improve a modern, professional, futuristic website for
+IEEE Robotics and Automation Society – Jadara University (RAS Jadara).
+
+⚠️ IMPORTANT RULES
+
+You MUST use the exact data provided below.
+
+Do NOT change names, roles, hierarchy, or links.
+
+Do NOT invent content.
+
+Your task is UI/UX + design enhancement ONLY.
+
+Keep the content accurate and official (IEEE-level professionalism).
+
+Website Identity
+
+Organization: IEEE Robotics and Automation Society – Jadara University
+
+Name displayed: RAS Jadara
+
+Theme: Robotics, Automation, AI, Innovation
+
+Style: Dark theme, neon/tech accents, futuristic but clean
+
+Target audience: University students, IEEE members, sponsors
+
+Required Sections
+1. Hero Section
+
+Title: “Welcome to RAS Jadara”
+
+Subtitle: “Where innovation meets robotics. Empowering students to explore, learn, and innovate.”
+
+CTA Buttons:
+
+Join Us Now (Google Form)
+
+Learn More (scroll to About)
+
+Animated background (particles / subtle motion)
+
+2. About Us – Who We Are
+
+Story Content (do not rewrite meaning):
+
+Started by nine passionate students
+
+Focus on robotics, automation, and technology
+
+Mission: empower students to explore, learn, and innovate
+
+Turn ideas into real-world solutions
+
+Core Values (use cards/icons):
+
+Innovation 🚀
+
+Collaboration 🤝
+
+Automation ⚙️
+
+3. Team Section (VERY IMPORTANT – keep hierarchy)
+Chair:
+
+Mohammad Malkawi
+Role: Chair
+LinkedIn:
+https://www.linkedin.com/in/mohammad-h-malkawi-3264b5365
+
+Vice Chair:
+
+Rama Maqableh
+Role: Vice Chair
+LinkedIn:
+https://www.linkedin.com/in/rama-maqableh-45124821b
+
+Executive Team:
+
+Nagham Zahrawi – Media Team Leader
+https://www.linkedin.com/in/nagham-al-zahrawi-ba71b337a
+
+Bushra Abu Alhija – Secretary
+https://www.linkedin.com/in/bushra-abu-alhija-a-863582381
+
+Baraa Alzoubi – Treasurer
+https://www.linkedin.com/in/baraa-alzoubi-65746a37b
+
+Core Members:
+
+Nour Khalaf – Media Team
+https://www.linkedin.com/in/nour-khalaf-0a7192361
+
+Serena Alazzam – Webmaster
+https://www.linkedin.com/in/serena-alazzam-9a8b59321
+
+Raghad Alzoubi – Member Development
+https://www.linkedin.com/in/raghad-alzoubi-9137a1384
+
+📌 Requirements:
+
+Cards with hover effects
+
+LinkedIn icon appears on hover
+
+Clear role visibility
+
+Respect hierarchy visually
+
+4. Gallery Section
+
+Gallery items:
+
+GREEN EYE – Innovation in Action
+
+BRANCH PIC – Building Together
+
+MEDIA ON – Behind the scenes
+
+Tech Showcase – Future of Robotics
+
+TIME WORK – Minds at Work
+
+FUN – Create fun and Minds
+
+Use:
+
+Grid layout
+
+Hover overlay
+
+Smooth transitions
+
+5. Contact & Social Media Section
+
+Social Media Links:
+
+Facebook:
+https://www.facebook.com/share/1CXi1ZzDWL/
+
+Instagram:
+https://www.instagram.com/ieee_ras_ju
+
+LinkedIn:
+https://www.linkedin.com/company/robot%E2%80%99s-and-automation-society-ieee-ras/
+
+Use modern icons and clean layout.
+
+6. Footer
+
+Text: © 2025 RAS Jadara
+
+Simple, professional, IEEE-style
+
+Technical Requirements
+
+HTML, CSS, JavaScript only
+
+Fully responsive
+
+Clean, readable, well-structured code
+
+Smooth animations (not heavy)
+
+Optimize performance
+
+Keep chatbot UI if possible
