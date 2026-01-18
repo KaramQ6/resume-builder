@@ -6,6 +6,8 @@ import {
   Rocket, Users, Cpu, ArrowRight, ExternalLink 
 } from "lucide-react";
 import heroBg from "@assets/generated_images/abstract_futuristic_robotics_background_with_neon_nodes.png";
+import rasLogo from "@assets/logo_ras-removebg-preview_(2)_1768729426847.png";
+import aiOverlay from "@assets/generated_images/futuristic_ai_data_stream_overlay_texture.png";
 
 // Gallery Images
 import imgGreenEye from "@assets/stock_images/futuristic_robotic_e_c8f06005.jpg";
@@ -95,17 +97,16 @@ export default function Home() {
       {/* Navbar */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-background/90 backdrop-blur-md border-b border-white/10 py-4 shadow-lg shadow-primary/5" : "bg-transparent py-6"
+          isScrolled ? "bg-background/90 backdrop-blur-md border-b border-white/10 py-2 shadow-lg shadow-primary/5" : "bg-transparent py-4"
         }`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center gap-2 group cursor-pointer" onClick={() => scrollToSection("#home")}>
-            <div className="w-10 h-10 rounded-lg fusion-gradient flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-              <Cpu className="text-white w-6 h-6" />
-            </div>
-            <span className="font-orbitron font-bold text-xl tracking-wider text-white group-hover:neon-text transition-all">
-              RAS <span className="text-primary">Jadara</span>
-            </span>
+            <img 
+              src={rasLogo} 
+              alt="RAS Jadara Logo" 
+              className="h-16 w-auto object-contain hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]" 
+            />
           </div>
 
           {/* Desktop Menu */}
@@ -172,10 +173,23 @@ export default function Home() {
           <img
             src={heroBg}
             alt="Robotics Background"
-            className="w-full h-full object-cover opacity-30 grayscale contrast-125"
+            className="w-full h-full object-cover opacity-20 grayscale contrast-125 scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(10,10,14,0.9)_100%)]" />
+          {/* AI Overlay Layer */}
+          <div 
+            className="absolute inset-0 opacity-10 mix-blend-screen"
+            style={{ 
+              backgroundImage: `url(${aiOverlay})`, 
+              backgroundSize: 'cover',
+              filter: 'hue-rotate(90deg)' 
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(10,10,14,0.95)_100%)]" />
+          
+          {/* Animated Tech Grid Lines */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]" />
+          
           {/* Fusion Ambient Glow */}
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-pulse" />
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-[120px] animate-pulse delay-1000" />
@@ -188,14 +202,21 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="font-orbitron text-5xl md:text-7xl lg:text-9xl font-black text-white mb-6 tracking-tight drop-shadow-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-sm">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-xs font-mono text-primary tracking-widest uppercase">System Online</span>
+            </div>
+            
+            <h1 className="font-orbitron text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight drop-shadow-2xl">
               WELCOME TO <br />
               <span className="fusion-text-gradient neon-text">
                 RAS JADARA
               </span>
             </h1>
-            <p className="text-lg md:text-2xl text-gray-300 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-              Where <span className="text-white font-medium">innovation</span> meets robotics. Empowering students to explore, learn, and innovate.
+            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+              Where <span className="text-white font-medium">Artificial Intelligence</span> meets Robotics. 
+              <br className="hidden md:block" />
+              Empowering the next generation of engineers to innovate.
             </p>
             
             <div className="flex flex-col md:flex-row items-center justify-center gap-6">
@@ -246,7 +267,7 @@ export default function Home() {
                   Started by nine passionate students, RAS Jadara is built on a foundation of curiosity and ambition.
                 </p>
                 <p>
-                  We focus on <span className="text-primary font-medium">robotics, automation, and technology</span>, 
+                  We focus on <span className="text-primary font-medium">robotics, automation, and AI</span>, 
                   driven by a mission to empower students to explore new frontiers, learn cutting-edge skills, 
                   and innovate for the future.
                 </p>
