@@ -33,3 +33,9 @@ vite.config.ts.*
 # Cache
 .cache/
 .netlify/
+
+# Replit
+.replit
+.config/
+.local/
+replit.nix
