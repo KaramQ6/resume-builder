@@ -334,7 +334,7 @@ export default function Home() {
               </h2>
               <div className="space-y-6 text-gray-400 leading-relaxed text-lg">
                 <p>
-                  Started by nine passionate students with ADVISOR Dr. Nada aljaarrah, RAS Jadara is built on a foundation of curiosity and ambition.
+                  Started by nine passionate students with ADVISOR Dr. Nada aljarrah, RAS Jadara is built on a foundation of curiosity and ambition.
                 </p>
                 <p>
                   We focus on <span className="text-primary font-medium">robotics, automation, and AI</span>,
